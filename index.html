@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis González · Producto y diseño de interfaz</title>
+<meta name="description" content="Dos herramientas internas diseñadas y construidas de cero: una plataforma de SEO y una app de operación de cocina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: oklch(0.972 0.009 84);
+    --ink: oklch(0.22 0.014 60);
+    --ink-soft: oklch(0.46 0.012 60);
+    --ink-faint: oklch(0.63 0.010 60);
+    --rule: oklch(0.88 0.012 74);
+    --accent: oklch(0.52 0.14 28);
+    --display: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+    --sans: "Instrument Sans", "Avenir Next", Avenir, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:clamp(0.98rem,0.93rem + 0.25vw,1.08rem);
+    line-height:1.6; font-synthesis-weight:none;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{width:min(100% - 2.5rem, 68rem); margin-inline:auto}
+
+  /* ---------- encabezado ---------- */
+  header{padding:clamp(3.5rem,9vh,7rem) 0 clamp(1rem,2.5vh,1.75rem)}
+  .kicker{
+    font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--ink-faint); margin:0 0 1.75rem;
+  }
+  h1{
+    font-family:var(--display); font-weight:300;
+    font-size:clamp(2.6rem,1.6rem + 4.4vw,5.4rem);
+    line-height:0.98; letter-spacing:-0.022em;
+    margin:0; max-width:22ch;
+  }
+  h1 em{font-style:italic; font-weight:500; color:var(--accent)}
+  .lede{
+    margin:2rem 0 0; max-width:46ch; color:var(--ink-soft);
+    font-size:clamp(1.02rem,0.98rem + 0.3vw,1.2rem);
+  }
+  .meta{
+    margin-top:2.75rem; padding-top:1.25rem; border-top:1px solid var(--rule);
+    display:flex; flex-wrap:wrap; gap:0.5rem 2.5rem;
+    font-size:0.85rem; color:var(--ink-faint);
+  }
+  .meta b{color:var(--ink); font-weight:500}
+
+  /* ---------- proyecto ---------- */
+  .project{padding:clamp(3rem,7vh,5.5rem) 0; border-top:1px solid var(--rule)}
+  .head{
+    display:grid; gap:1.5rem 3.5rem; align-items:end;
+    grid-template-columns:1fr;
+  }
+  @media (min-width:56rem){
+    .head{grid-template-columns:7.5rem 1fr 15rem}
+  }
+  .num{
+    font-family:var(--display); font-weight:300; font-size:3.6rem;
+    line-height:0.8; color:var(--rule); letter-spacing:-0.03em;
+  }
+  h2{
+    font-family:var(--display); font-weight:500;
+    font-size:clamp(1.75rem,1.4rem + 1.5vw,2.7rem);
+    line-height:1.05; letter-spacing:-0.018em; margin:0;
+  }
+  h2 span{display:block; font-family:var(--sans); font-weight:400;
+    font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--ink-faint); margin-bottom:0.7rem}
+  .stack{font-size:0.83rem; color:var(--ink-faint); line-height:1.5}
+  .stack b{display:block; color:var(--ink); font-weight:500;
+    letter-spacing:0.1em; text-transform:uppercase; font-size:0.7rem; margin-bottom:0.35rem}
+  .about{
+    margin:2.25rem 0 0; max-width:58ch; color:var(--ink-soft);
+  }
+  @media (min-width:56rem){ .about{margin-left:11rem} }
+
+  /* ---------- figuras ---------- */
+  .shots{margin:2.75rem 0 0; display:grid; gap:clamp(1.5rem,3.5vw,2.75rem)}
+  figure{margin:0}
+  .frame{
+    border:1px solid var(--rule); border-radius:6px; overflow:hidden;
+    background:oklch(0.99 0.004 84);
+    box-shadow:0 1px 2px oklch(0.22 0.014 60 / 0.05), 0 12px 28px -18px oklch(0.22 0.014 60 / 0.28);
+  }
+  .frame img{display:block; width:100%; height:auto}
+  figcaption{
+    margin-top:0.85rem; font-size:0.83rem; color:var(--ink-faint);
+    display:flex; gap:0.6rem; align-items:baseline;
+  }
+  figcaption b{color:var(--ink); font-weight:500; white-space:nowrap}
+  figcaption i{font-style:normal; color:var(--rule)}
+  /* la segunda pareja se sirve en dos columnas en pantallas anchas */
+  @media (min-width:56rem){
+    .pair{grid-template-columns:1fr 1fr; align-items:start}
+  }
+
+  /* ---------- cierre ---------- */
+  .live{padding:clamp(3rem,7vh,5rem) 0; border-top:1px solid var(--rule)}
+  .live h2{max-width:26ch}
+  .live p{max-width:52ch; color:var(--ink-soft); margin:1.25rem 0 2rem}
+  .go{
+    display:inline-flex; align-items:baseline; gap:0.7rem;
+    font-size:1.02rem; color:var(--ink); text-decoration:none;
+    border-bottom:1px solid var(--accent); padding-bottom:0.2rem;
+    transition:gap 0.4s cubic-bezier(0.16,1,0.3,1), color 0.25s;
+  }
+  .go span{color:var(--accent); font-size:0.9rem}
+  .go:hover{gap:1.2rem; color:var(--accent)}
+  footer{
+    padding:2.5rem 0 4rem; border-top:1px solid var(--rule);
+    font-size:0.82rem; color:var(--ink-faint);
+  }
+  footer p{margin:0.3rem 0}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="kicker">Luis González · Monterrey, México</p>
+  <h1>Dos herramientas internas, <em>diseñadas y construidas</em> de cero.</h1>
+  <p class="lede">
+    Trabajo la lógica, el diseño y el enfoque a conversión. Cuando el equipo necesita
+    una plataforma que no existe en el mercado, la construyo.
+  </p>
+  <p class="meta">
+    <span><b>Rol</b> &nbsp;Producto, diseño de interfaz, desarrollo</span>
+    <span><b>Stack</b> &nbsp;SvelteKit, TypeScript, Tailwind</span>
+    <span><b>Año</b> &nbsp;2026</span>
+  </p>
+</header>
+
+<section class="project wrap">
+  <div class="head">
+    <p class="num">01</p>
+    <h2><span>Plataforma interna</span>Inbound, una consola de SEO</h2>
+    <p class="stack"><b>Construido con</b>SvelteKit · TypeScript · Convex · APIs de Google Search Console y DataForSEO</p>
+  </div>
+
+  <p class="about">
+    Reemplaza la suscripción a una suite de SEO comercial. Ocho módulos bajo una misma
+    navegación: exploración de dominios, investigación de keywords, análisis de resultados
+    de búsqueda, monitoreo de posiciones y auditoría técnica. La interfaz es deliberadamente
+    oscura y silenciosa, porque se usa muchas horas al día y compite con la atención de
+    la propia pantalla de Google.
+  </p>
+
+  <div class="shots">
+    <figure>
+      <div class="frame"><img src="img/seo-site-explorer.png" alt="site-explorer-inbound-consola-seo" width="1440" height="620" loading="lazy"></div>
+      <figcaption><b>Site Explorer</b><i>/</i>Punto de entrada. Un solo campo, sugerencias de dominio y filtros discretos a los costados.</figcaption>
+    </figure>
+    <div class="shots pair">
+      <figure>
+        <div class="frame"><img src="img/seo-serp-explorer.png" alt="serp-explorer-inbound-analisis-resultados-google" width="1440" height="600" loading="lazy"></div>
+        <figcaption><b>SERP Explorer</b><i>/</i>Búsquedas sugeridas con su conteo de features.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="img/seo-web-explorer.png" alt="web-explorer-inbound-modulo-en-desarrollo" width="1440" height="620" loading="lazy"></div>
+        <figcaption><b>Web Explorer</b><i>/</i>Módulo en desarrollo, con su alcance a la vista.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="project wrap">
+  <div class="head">
+    <p class="num">02</p>
+    <h2><span>Operación diaria</span>Cocina, el lunch del equipo</h2>
+    <p class="stack"><b>Construido con</b>SvelteKit · TypeScript · Convex · Claude para planear el menú</p>
+  </div>
+
+  <p class="about">
+    La comida del equipo se planea, se cocina y se mide en un mismo lugar. El menú de la
+    semana lo propone un modelo de lenguaje y una persona lo aprueba. La pantalla de cocina
+    corre en una tablet junto a la estufa: cronómetros por platillo, un paso a la vez y
+    botones grandes porque se opera con las manos ocupadas. El comensal deja su opinión
+    escaneando un código impreso en la mesa.
+  </p>
+
+  <div class="shots">
+    <figure>
+      <div class="frame"><img src="img/cocina-cocinar.png" alt="pantalla-cocinar-cronometros-paso-a-paso-tablet" width="1440" height="700" loading="lazy"></div>
+      <figcaption><b>Cocinando</b><i>/</i>Tareas del día a la izquierda, el paso actual al centro, los tiempos que corren solos a la derecha.</figcaption>
+    </figure>
+    <div class="shots pair">
+      <figure>
+        <div class="frame"><img src="img/cocina-chef.png" alt="hoy-en-la-cocina-tarjetas-platillos-del-dia" width="1440" height="1100" loading="lazy"></div>
+        <figcaption><b>Hoy en la cocina</b><i>/</i>Cuatro platillos, su estado y cuánto falta.</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="img/cocina-inicio.png" alt="inicio-cocina-cuby-menu-cocina-compras" width="1440" height="600" loading="lazy"></div>
+        <figcaption><b>Inicio</b><i>/</i>Tres caminos, sin adornos: planear, cocinar, comprar.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="live wrap">
+  <h2><span>Interactivo</span>Un configurador que sí puedes usar</h2>
+  <p>
+    Las pantallas de arriba son capturas: esas dos plataformas corren contra bases de datos
+    internas. Esta pieza, en cambio, está publicada y funciona completa en el navegador.
+  </p>
+  <a class="go" href="https://luiswglz.github.io/terra-configurador/">
+    Abrir el configurador <span>&rarr;</span>
+  </a>
+</section>
+
+<footer class="wrap">
+  <p>Las capturas se tomaron de las aplicaciones corriendo en local. No contienen datos de clientes.</p>
+  <p>luisglz202@gmail.com</p>
+</footer>
+
+</body>
+</html>
